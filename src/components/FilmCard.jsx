@@ -7,7 +7,6 @@ const FilmCard = props => {
                 <div className="card-body">
                     <h5 className="card-title"><u>{props.title}</u></h5>
                     <p className="card-text">{props.text}</p>
-                    <button className="btn btn-primary">More Info</button>
                 </div>
             </div>
         </div>
