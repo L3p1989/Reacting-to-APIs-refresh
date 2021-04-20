@@ -1,19 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FilmCard from "./components/FilmCard";
 
 const App = () => {
-  const [isFilm, setIsFilm] = useState(false);
+  const [isFilms, setIsFilms] = useState(false);
 
   const [isPeople, setIsPeople] = useState(false);
 
+  const [films, setFilms] = useState([]);
+
+  useEffect(() => {
+
+    const getFilms = async () => {
+      const res = await fetch("https://ghibliapi.herokuapp.com/films");
+      const allFilms = await res.json();
+      setFilms(allFilms);
+    }
+
+    getFilms();
+
+  }, []);
+
   const renderFilms = () => {
-    setIsFilm(true);
+    setIsFilms(true);
     setIsPeople(false);
   };
 
   const renderPeople = () => {
     setIsPeople(true);
-    setIsFilm(false);
+    setIsFilms(false);
   };
 
   return (
@@ -32,7 +46,9 @@ const App = () => {
         </button>
       </div>
       <div className="row justify-content-center mt-5">
-        {isFilm ? <FilmCard /> : null}
+        {isFilms ? films.map(film => {
+          return <FilmCard key={`film-card-${film.id}`} title={film.title} text={film.description} />
+        }) : null}
         {isPeople ? <p>People test</p> : null}
       </div>
     </div>
