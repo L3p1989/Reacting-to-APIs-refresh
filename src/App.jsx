@@ -61,7 +61,7 @@ const App = () => {
           return <FilmCard key={film.id} title={film.title} text={film.description} />
         }) : null}
         {isPeople ? people.map(person => {
-          return <PeopleCard key={person.id} name={person.name} gender={person.gender} age={person.age} eye={person.eye_color} hair={person.hair_color} />
+          return <PeopleCard key={person.id} name={person.name} gender={person.gender} age={person.age} eye={person.eye_color} hair={person.hair_color} id={person.id} />
         }) : null}
       </div>
     </div>
