@@ -9,6 +9,7 @@ const PeopleCard = props => {
                 <p className="card-text">Age: {props.age}</p>
                 <p className="card-text">Eye Color: {props.eye}</p>
                 <p className="card-text">Hair Color: {props.hair}</p>
+                <a href={`https://ghibliapi.herokuapp.com/people/${props.id}`} target="_blank" rel="noreferrer noopener" className="btn btn-primary">More info</a>
             </div>
         </div>
     );
